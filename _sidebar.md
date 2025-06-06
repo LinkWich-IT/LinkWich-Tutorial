@@ -16,3 +16,4 @@
 * [Usuarios](usuarios.md)
 * [Reportes](reportes.md)
 * [Licenciamiento](licencias.md)
+* [Políticas de uso](politicas.md)

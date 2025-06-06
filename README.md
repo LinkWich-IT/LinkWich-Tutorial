@@ -114,6 +114,7 @@ A continuación se muestran los requisitos de hardware y software para instalar 
 |                                 | eventlet (para Flask-SocketIO)            | Última versión estable                                          |
 | **Tarjeta de Video (GPU)**      | No es obligatoria                         | NVIDIA con soporte CUDA (p. ej. RTX 20/30/40 series) para IA     |
 |                                 |                                           | *(Requerida solo si se desea acelerar procesamiento de modelos)* |
+|**Servidor con salida a Internet**| Obligatorio para el envio de correos     | Obligatorio para el envio de correos
 | **Navegador Web (Cliente)**     | Chrome, Firefox, Edge o Safari (actualizados) |                                                              |
 
 > **Nota sobre IA y GPU:**  

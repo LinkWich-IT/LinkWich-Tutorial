@@ -71,7 +71,7 @@
 - 🔄 **NetPath Inteligente**  
   Traceroute avanzado con trazado de múltiples rutas, latencia, pérdida de paquetes y gráficos interactivos.
 
-🖱️ **Interacción Visual y Diagnóstico**  
+-🖱️ **Interacción Visual y Diagnóstico**  
   • **Ver Interfaces:** con un solo clic, muestra en pantalla las estadísticas SNMP de cada interfaz (tráfico, errores, estado).  
   • **Buscar MAC:** botón dedicado para filtrar y localizar direcciones MAC en la tabla de switching, sin escribir comandos.  
   • **Prueba TDR (Time Domain Reflectometry):** ejecuta un test de cableado desde la interfaz web y muestra resultados de reflectometría automáticamente.  
@@ -84,13 +84,13 @@
 ## 📸 Capturas de Pantalla
 
 <div align="center">
-  <img src="assets/dashboard.png" alt="Dashboard" width="45%" style="margin-bottom: 1rem;" />
-  <img src="assets/mapa.png" alt="Mapa LLDP" width="45%" style="margin-bottom: 1rem;" />
+  <img src="assets/img/dashboard.png" alt="Dashboard" width="45%" style="margin-bottom: 1rem;" />
+  <img src="assets/img/MAP.png" alt="Mapa LLDP" width="45%" style="margin-bottom: 1rem;" />
 </div>
 <div align="center">
-  <img src="assets/alertas.png" alt="Alertas" width="30%" />
-  <img src="assets/respaldos.png" alt="Respaldos" width="30%" />
-  <img src="assets/terminal.png" alt="Terminal SSH" width="30%" />
+  <img src="assets/img/alertas.png" alt="Alertas" width="30%" />
+  <img src="assets/img/respaldos.png" alt="Respaldos" width="30%" />
+  <img src="assets/img/terminal.png" alt="Terminal SSH" width="30%" />
 </div>
 
 ---

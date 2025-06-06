@@ -7,5 +7,6 @@
 * [Terminal SSH](terminal.md)
 * [NetPath](netpath.md)
 * [Syslog y Reglas](syslog.md)
+* [Usuarios](usuarios.md)
 * [Reportes](reportes.md)
 * [Licenciamiento](licencias.md)

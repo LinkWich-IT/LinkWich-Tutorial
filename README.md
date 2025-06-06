@@ -118,6 +118,12 @@ A continuación se muestran los requisitos de hardware y software para instalar 
 
 ---
 
+| Cantidad de Dispositivos | CPU (mínimo)                   | RAM (mínimo)                        | Tarjeta de Video                                    | Tarjeta de Red                                     | Notas                                 |
+|--------------------------|--------------------------------|-------------------------------------|------------------------------------------------------|----------------------------------------------------|---------------------------------------|
+| Hasta 50                 | Intel Core i5 (o equivalente)  | 8 GB DDR4 (o equivalente DDR3)      | No obligatoria (recomendada NVIDIA con CUDA para IA) | 1 Gbps                                             | Hasta 500 sensores                    |
+| 51 – 150                 | Intel Core i7 (o equivalente)  | 16 GB                               | No obligatoria (recomendada NVIDIA con CUDA para IA) | 1 Gbps (varias NIC si hay múltiples VLAN/redes)   |                                       |
+| Más de 150               | Intel Core i9 (o equivalente)  | 32 GB                               | No obligatoria (recomendada NVIDIA con CUDA para IA) | 1 Gbps (varias NIC si hay múltiples VLAN/redes)   | En Windows Server: soporte para NIC-TEAM |
+
 ## 🚀 Instalación Rápida
 
 > **Nota:** Se asume que MariaDB ya está instalada y accesible.  

@@ -26,7 +26,7 @@
 
 ## 📖 Introducción
 
-**LinkWich-Monitor** es la solución todo-en-uno diseñada para administradores de red que buscan visibilidad, control y automatización en una misma plataforma. Con un **dashboard interactivo**, **mapas de topología automáticos**, **alertas avanzadas**, **respaldos programados**, **reportes profesionales** y acceso **SSH web**, LinkWich-Monitor te brinda una experiencia ágil y profesional para gestionar cualquier infraestructura de TI.
+**LinkWich-Monitor** es la solución todo-en-uno diseñada para administradores de red que buscan visibilidad, control y automatización en una misma plataforma. Con un **dashboard interactivo**, **mapas de topología automáticos**, **alertas avanzadas**, **respaldos programados**, **reportes profesionales**, **syslog** y acceso **SSH web**, LinkWich-Monitor te brinda una experiencia ágil y profesional para gestionar cualquier infraestructura de TI.
 
 ---
 
@@ -87,23 +87,32 @@
 
 ---
 
-## 🎯 Requisitos
+A continuación se muestran los requisitos de hardware y software para instalar y ejecutar LinkWich-Monitor de manera óptima.
 
-- **Sistema Operativo (Servidor):**  
-  • Windows Server 2019 en adelante (x64)  
-  • Windows 10 / 11 (x64)  
+| Componente                      | Requisito Mínimo                          | Recomendado / Notas                                              |
+|---------------------------------|-------------------------------------------|------------------------------------------------------------------|
+| **Sistema Operativo (Servidor)**| Windows Server 2019 (x64)                 | Windows Server 2022 (x64)                                        |
+|                                 | Windows 10 / 11 (x64)                     | Windows 10 Pro / Windows 11 Pro                                  |
+| **Procesador (CPU)**            | 4 cores (x64, 2.0 GHz)                    | 8 cores (x64, 3.0 GHz o superior)                                |
+| **Memoria RAM**                 | 8 GB                                      | 16 GB o más                                                      |
+| **Almacenamiento (HDD/SSD)**    | 50 GB libres                              | SSD NVMe de 100 GB o más                                         |
+| **Base de Datos**               | MariaDB 10.4+                             | MariaDB 10.6+                                                    |
+| **Dependencias de Python**      | Python 3.9+                               | Python 3.10+; entrono virtual (venv)                             |
+|                                 | Flask                                     | Última versión estable                                           |
+|                                 | mysql-connector-python                    | Última versión estable                                           |
+|                                 | pysnmp                                    | Última versión estable                                           |
+|                                 | requests                                  | Última versión estable                                           |
+|                                 | eventlet (para Flask-SocketIO)            | Última versión estable                                           |
+| **Tarjeta de Video (GPU)**      | No es obligatoria                         | NVIDIA con soporte CUDA (p. ej. RTX 20/30/40 series) para IA     |
+|                                 |                                           | *(Requerida solo si se desea acelerar procesamiento de modelos)* |
+| **Navegador Web (Cliente)**     | Chrome, Firefox, Edge o Safari (actualizados) |                                                              |
 
-- **Base de Datos:**  
-  • MariaDB 10.4+  
+> **Nota sobre IA y GPU:**  
+> Para aprovechar las funcionalidades de análisis de logs basadas en modelos de IA, se recomienda contar con una **tarjeta de video NVIDIA** con soporte CUDA. Sin embargo, LinkWich-Monitor funcionará correctamente sin GPU dedicada; contará con procesamiento en CPU, aunque con menor rendimiento en tareas de inferencia de modelos.
 
-- **Dependencias de Python:**  
-  • Python 3.9+  
-  • Flask  
-  • mysql-connector-python  
-  • pysnmp  
-  • requests  
-  • eventlet (para Flask-SocketIO)  
-
+> **Espacio adicional en disco:**  
+> - Logs históricos y respaldos automáticos pueden requerir almacenamiento extra (dependiendo del volumen de datos).  
+> - Se sugiere reservar al menos **100 GB** en el servidor si se prevé un uso intensivo de reportes, dashboards y archivos de respaldos.  
 - **Navegador Web (Cliente):**  
   • Chrome, Firefox, Edge o Safari (versión reciente)  
 

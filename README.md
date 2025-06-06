@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/LOGO-SIN-CIRCULO-AZUL.png" alt="LinkWich-Monitor Logo" width="220"/>
+  <img src="assets/img/LOGO-SIN-CIRCULO-AZUL.png" alt="LinkWich-Monitor Logo" width="220"/>
 </p>
 
 <h1 align="center">LinkWich-Monitor</h1>

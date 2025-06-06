@@ -1,4 +1,9 @@
-* [Inicio](/)
+<!-- Logo centrado en la cabecera del sidebar -->
+<p align="center">
+  <img src="assets/img/LOGO-SIN-CIRCULO-AZUL.png" alt="LinkWich-Monitor Logo" width="80" />
+</p>
+
+* [Inicio](README.md)
 * [Dashboard](dashboard.md)
 * [Configuración de Correo](correo.md)
 * [Mapa LLDP](mapa.md)

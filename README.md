@@ -88,9 +88,9 @@
   <img src="assets/img/MAP.png" alt="Mapa LLDP" width="45%" style="margin-bottom: 1rem;" />
 </div>
 <div align="center">
-  <img src="assets/img/alertas.png" alt="Alertas" width="30%" />
-  <img src="assets/img/respaldos.png" alt="Respaldos" width="30%" />
-  <img src="assets/img/terminal.png" alt="Terminal SSH" width="30%" />
+  <img src="assets/img/info-snmp.png" alt="Alertas" width="30%" />
+  <img src="assets/img/traza.png" alt="Respaldos" width="30%" />
+  <img src="assets/img/ssh.png" alt="Terminal SSH" width="30%" />
 </div>
 
 ---

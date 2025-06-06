@@ -4,7 +4,7 @@
 
 <h1 align="center">LinkWich-Monitor</h1>
 <p align="center">
-  <strong>Tu plataforma integral de monitoreo de redes</strong>
+  <strong>Tu plataforma integral de monitoreo de redes e infrastructura</strong>
 </p>
 
 <p align="center">
@@ -57,7 +57,7 @@
   • Notificaciones por correo electrónico (configurables por grupo/dispositivo).  
 
 - 💾 **Respaldos Automatizados**  
-  Programación diaria, semanal o mensual de respaldos de configuración via SSH (TFTP/FTP) en switches y routers compatibles.  
+  Programación diaria, semanal o mensual de respaldos de configuración via SSH en switches y routers compatibles.  
 
 - 📈 **Reportes Profesionales**  
   • Disponibilidad histórica por dispositivo.  
@@ -69,7 +69,15 @@
   Consola estilo PuTTY dentro del navegador; múltiples sesiones simultáneas, registro de comandos y auditoría de accesos.  
 
 - 🔄 **NetPath Inteligente**  
-  Traceroute avanzado con trazado de múltiples rutas, latencia, pérdida de paquetes y gráficos interactivos.  
+  Traceroute avanzado con trazado de múltiples rutas, latencia, pérdida de paquetes y gráficos interactivos.
+
+🖱️ **Interacción Visual y Diagnóstico**  
+  • **Ver Interfaces:** con un solo clic, muestra en pantalla las estadísticas SNMP de cada interfaz (tráfico, errores, estado).  
+  • **Buscar MAC:** botón dedicado para filtrar y localizar direcciones MAC en la tabla de switching, sin escribir comandos.  
+  • **Prueba TDR (Time Domain Reflectometry):** ejecuta un test de cableado desde la interfaz web y muestra resultados de reflectometría automáticamente.  
+  • **Descubrimiento LLDP:** botón “Mapear Vecinos” que ejecuta la consulta LLDP y despliega automáticamente los vecinos conectados.  
+  • **Comandos de Visualización Predefinidos:** menú desplegable con opciones como `show interfaces`, `show mac-address-table`, `show lldp neighbors`, etc., que se ejecutan al presionar y presentan la salida en pantalla.  
+  • **Upgrade de Equipo:** acción gráfica para iniciar el proceso de actualización de firmware/configuración vía SSH, todo controlado desde el panel sin ingresar a CLI.  
 
 ---
 

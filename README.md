@@ -84,13 +84,13 @@
 ## 📸 Capturas de Pantalla
 
 <div align="center">
-  <img src="assets/img/dashboard.png" alt="Dashboard" width="45%" style="margin-bottom: 1rem;" />
-  <img src="assets/img/MAP.png" alt="Mapa LLDP" width="45%" style="margin-bottom: 1rem;" />
+  <img src="assets/img/dashboard.jpg" alt="Dashboard" width="45%" style="margin-bottom: 1rem;" />
+  <img src="assets/img/MAP.jpg" alt="Mapa LLDP" width="45%" style="margin-bottom: 1rem;" />
 </div>
 <div align="center">
-  <img src="assets/img/info-snmp.png" alt="Información SNMP" width="30%" />
-  <img src="assets/img/traza.png" alt="NetPath" width="30%" />
-  <img src="assets/img/ssh.png" alt="Terminal SSH" width="30%" />
+  <img src="assets/img/info-snmp.jpg" alt="Información SNMP" width="30%" />
+  <img src="assets/img/traza.jpg" alt="NetPath" width="30%" />
+  <img src="assets/img/ssh.jpg" alt="Terminal SSH" width="30%" />
 </div>
 
 ---

@@ -88,13 +88,13 @@
   <img src="assets/img/MAP.png" alt="Mapa LLDP" width="45%" style="margin-bottom: 1rem;" />
 </div>
 <div align="center">
-  <img src="assets/img/info-snmp.png" alt="Alertas" width="30%" />
+  <img src="assets/img/info-snmp.png" alt="Información" width="30%" />
   <img src="assets/img/traza.png" alt="Respaldos" width="30%" />
   <img src="assets/img/ssh.png" alt="Terminal SSH" width="30%" />
 </div>
 
 ---
-
+## 📸 Requisitios de Hardware y Software
 A continuación se muestran los requisitos de hardware y software para instalar y ejecutar LinkWich-Monitor de manera óptima.
 
 | Componente                      | Requisito Mínimo                          | Recomendado / Notas                                              |

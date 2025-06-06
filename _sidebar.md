@@ -1,5 +1,6 @@
 * [Inicio](/)
 * [Dashboard](dashboard.md)
+* [Configuración de Correo](correo.md)
 * [Mapa LLDP](mapa.md)
 * [Alertas](alertas.md)
 * [Respaldos](respaldos.md)

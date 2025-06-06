@@ -5,6 +5,7 @@
 
 * [Inicio](README.md)
 * [Dashboard](dashboard.md)
+* [Agregar Dispositivos](agregar.md)
 * [Configuración de Correo](correo.md)
 * [Mapa LLDP](mapa.md)
 * [Alertas](alertas.md)

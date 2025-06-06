@@ -106,11 +106,7 @@ A continuación se muestran los requisitos de hardware y software para instalar 
 | **Almacenamiento (HDD/SSD)**    | 50 GB libres                              | SSD NVMe de 100 GB o más                                         |
 | **Base de Datos**               | MariaDB 10.4+                             | MariaDB 10.6+                                                    |
 | **Dependencias de Python**      | Python 3.9+                               | Python 3.10+; entrono virtual (venv)                             |
-|                                 | Flask                                     | Última versión estable                                           |
-|                                 | mysql-connector-python                    | Última versión estable                                           |
-|                                 | pysnmp                                    | Última versión estable                                           |
-|                                 | requests                                  | Última versión estable                                           |
-|                                 | eventlet (para Flask-SocketIO)            | Última versión estable                                           |
+
 | **Tarjeta de Video (GPU)**      | No es obligatoria                         | NVIDIA con soporte CUDA (p. ej. RTX 20/30/40 series) para IA     |
 |                                 |                                           | *(Requerida solo si se desea acelerar procesamiento de modelos)* |
 | **Navegador Web (Cliente)**     | Chrome, Firefox, Edge o Safari (actualizados) |                                                              |

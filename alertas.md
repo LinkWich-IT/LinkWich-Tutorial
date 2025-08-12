@@ -1,7 +1,7 @@
-📡 Monitoreo de Servicios y Alertas – LinkWich-Monitor
+#📡  **Monitoreo de Servicios y Alertas – LinkWich-Monitor**
 El módulo de Servicios y Alertas te permite vigilar puertos/hosts, crear reglas de notificación (correo y/o WhatsApp) y programar tareas de verificación como PING.
 
-1️⃣ Registrar un Servicio a Monitorear
+1️⃣ *Registrar un Servicio a Monitorear*
 En Servicios → Registrar Servicio completa:
 
 Nombre: etiqueta del servicio (ej. Puerto 5000).

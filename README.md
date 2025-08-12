@@ -104,12 +104,11 @@ A continuación se muestran los requisitos de hardware y software para instalar 
 | Componente                      | Requisito Mínimo                          | Recomendado / Notas                                              |
 |---------------------------------|-------------------------------------------|------------------------------------------------------------------|
 | **Sistema Operativo (Servidor)**| Windows Server 2019 (x64)                 | Windows Server 2022 (x64)                                        |
-|                                 | Windows 10 / 11 (x64)                     | Windows 10 Pro / Windows 11 Pro                                  |
+|                                 | Windows 10 Pro (x64)                     | Windows 11 Pro                               |
 | **Procesador (CPU)**            | 4 cores (x64, 2.0 GHz)                    | 8 cores (x64, 3.0 GHz o superior)                                 |
 | **Memoria RAM**                 | 8 GB                                      | 16 GB o más                                                      |
 | **Almacenamiento (HDD/SSD)**    | 50 GB libres                              | SSD NVMe de 100 GB o más                                         |
-| **Base de Datos**               | MariaDB 10.4+                             | MariaDB 10.6+                                                    |
-| **Dependencias de Python**      | Python 3.9+                               | Python 3.10+; entorno virtual (venv)                             |                                   |
+| **Base de Datos**               | MariaDB 10.4+                             | MariaDB 10.6+                                                    |                                  |
 |                                 | requests                                  | Última versión estable                                          |
 |                                 | eventlet (para Flask-SocketIO)            | Última versión estable                                          |
 | **Tarjeta de Video (GPU)**      | No es obligatoria                         | NVIDIA con soporte CUDA (p. ej. RTX 20/30/40 series) para IA     |

@@ -148,12 +148,12 @@ Para que **LinkWich-Monitor** funcione sin bloqueos, asegúrate de **permitir lo
 
 | Puerto | Proto | Dirección | Módulo / Servicio | ¿Para qué sirve? | ¿Obligatorio? | Notas / Recomendaciones |
 |---:|:---:|:---:|---|---|:---:|---|
-| **5000** | TCP | **Entrada** desde la LAN | **UI Web (Hypercorn HTTPS)** | Acceso a la consola web de LinkWich-Monitor | ✅ | URL: `https://IP:5000/`. Requiere certificados TLS válidos en `ssl/`. |
+| **5000** | TCP | **Entrada** desde la LAN | **UI Web (HTTPS)** | Acceso a la consola web de LinkWich-Monitor | ✅ | URL: `https://IP:5000/`. Requiere certificados TLS válidos en `ssl/`. |
 | **5002** | TCP | **Entrada** desde la LAN | **Terminal Web hacia equipos** | Consola SSH a dispositivos vía navegador | ✅ (si usas terminal) | Asegura el acceso a `https://IP:5002/terminal/...`. Restringe por IPs de administración. |
 | **514** | UDP | **Entrada** desde dispositivos | **Syslog Receiver** | Recepción de logs desde switches/routers/UPS | ✅ (si usas Syslog) | En los equipos, apunta el **servidor syslog** a `IP:514/UDP`. Considera NAT/firewall intermedio. |
 | **69** | UDP | **Entrada** desde dispositivos | **TFTP embebido** | Transferencia de firmware/respaldos | ☑️ Opcional | TFTP usa puertos **efímeros** además del 69/UDP. Abre/permite **relacionados** o usa NAT stateful. |
 | **2121** | TCP | **Entrada** desde dispositivos | **FTP embebido** (si se habilita) | Alternativa a TFTP para archivos | ☑️ Opcional | Servicio desactivado por defecto. Si se usa **FTP pasivo**, define un rango y permítelo en el firewall. |
-| **3000** | TCP | Entrada **local** (loopback) | **WhatsApp Bot (NodeJS)** | Vinculación QR y mensajería | ☑️ Opcional | Por defecto local. Si expones a la LAN, **restringe**. Puede variarse con `WA_BOT_PORT`. |
+| **3000** | TCP | Entrada **local** (loopback) | **WhatsApp Bot** | Vinculación QR y mensajería | ☑️ Opcional | Por defecto local. Si expones a la LAN, **restringe**. Puede variarse con `WA_BOT_PORT`. |
 | **443 / 465 / 587** | TCP | **Salida** a Internet / SMTP | **Correo saliente** | Envío de notificaciones por email | ✅ (si envías correo) | Abre el puerto según tu proveedor (TLS/SSL). |
 | **22 / 23** | TCP | **Salida** a dispositivos | **SSH / Telnet a equipos** | Respaldos, comandos y terminal | ✅ | Prefiere **SSH (22)**. Permite retorno de sesiones (stateful). |
 | **161** | UDP | **Salida** a dispositivos | **SNMP Polling** | Métricas y descubrimiento SNMP | ✅ (si usas SNMP) | Permite respuestas UDP de vuelta (stateful). Traps (162/UDP) no requeridos salvo uso explícito. |

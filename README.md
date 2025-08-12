@@ -136,11 +136,68 @@ A continuación se muestran los requisitos de hardware y software para instalar 
 
 ---
 
-## 🚀 Instalación Rápida
+# 🚀 **Instalación Rápida – Puertos y Reglas de Red necesarias**
 
-> **Nota:** Se asume que MariaDB ya está instalada y accesible.  
+Para que **LinkWich-Monitor** funcione sin bloqueos, asegúrate de **permitir los puertos** que usa la aplicación y sus servicios integrados.
 
-1. Clona el repositorio oficial:  
-   ```bash
-   git clone https://github.com/LinkWich-IT/LinkWich-Tutorial.git
-   cd LinkWich-Tutorial
+---
+
+## 📦 **Resumen de puertos**
+
+> Valores **por defecto**. Si cambias algún puerto en tu despliegue, ajusta el firewall en consecuencia.
+
+| Puerto | Proto | Dirección | Módulo / Servicio | ¿Para qué sirve? | ¿Obligatorio? | Notas / Recomendaciones |
+|---:|:---:|:---:|---|---|:---:|---|
+| **5000** | TCP | **Entrada** desde la LAN | **UI Web (Hypercorn HTTPS)** | Acceso a la consola web de LinkWich-Monitor | ✅ | URL: `https://IP:5000/`. Requiere certificados TLS válidos en `ssl/`. |
+| **5002** | TCP | **Entrada** desde la LAN | **Terminal Web hacia equipos** | Consola SSH a dispositivos vía navegador | ✅ (si usas terminal) | Asegura el acceso a `https://IP:5002/terminal/...`. Restringe por IPs de administración. |
+| **514** | UDP | **Entrada** desde dispositivos | **Syslog Receiver** | Recepción de logs desde switches/routers/UPS | ✅ (si usas Syslog) | En los equipos, apunta el **servidor syslog** a `IP:514/UDP`. Considera NAT/firewall intermedio. |
+| **69** | UDP | **Entrada** desde dispositivos | **TFTP embebido** | Transferencia de firmware/respaldos | ☑️ Opcional | TFTP usa puertos **efímeros** además del 69/UDP. Abre/permite **relacionados** o usa NAT stateful. |
+| **2121** | TCP | **Entrada** desde dispositivos | **FTP embebido** (si se habilita) | Alternativa a TFTP para archivos | ☑️ Opcional | Servicio desactivado por defecto. Si se usa **FTP pasivo**, define un rango y permítelo en el firewall. |
+| **3000** | TCP | Entrada **local** (loopback) | **WhatsApp Bot (NodeJS)** | Vinculación QR y mensajería | ☑️ Opcional | Por defecto local. Si expones a la LAN, **restringe**. Puede variarse con `WA_BOT_PORT`. |
+| **443 / 465 / 587** | TCP | **Salida** a Internet / SMTP | **Correo saliente** | Envío de notificaciones por email | ✅ (si envías correo) | Abre el puerto según tu proveedor (TLS/SSL). |
+| **22 / 23** | TCP | **Salida** a dispositivos | **SSH / Telnet a equipos** | Respaldos, comandos y terminal | ✅ | Prefiere **SSH (22)**. Permite retorno de sesiones (stateful). |
+| **161** | UDP | **Salida** a dispositivos | **SNMP Polling** | Métricas y descubrimiento SNMP | ✅ (si usas SNMP) | Permite respuestas UDP de vuelta (stateful). Traps (162/UDP) no requeridos salvo uso explícito. |
+| **ICMP** | — | **Salida** a destinos | **PING / NetPath** | Latencia y disponibilidad | ✅ | Autoriza **Echo Request** saliente y **Reply** entrante (stateful). |
+| **53 / 123** | UDP | **Salida** a Internet | **DNS / NTP** | Resolución de nombres y hora | ✅ | Recomendada sincronía NTP para tokens/SSL. |
+| **9200** | TCP | **Salida** a Elastic (si aplica) | **Elasticsearch** | Carga de índices de Syslog/Métricas | ☑️ Opcional | Solo si tu despliegue usa Elastic externo. |
+
+---
+
+## 🔐 **Reglas mínimas de firewall (recomendación)**
+
+- **Desde la LAN de administración hacia el servidor**: permitir **TCP 5000** (UI) y **TCP 5002** (Terminal Web).  
+- **Desde dispositivos hacia el servidor**: permitir **UDP 514** (Syslog) y, si usas archivos, **UDP 69** (TFTP) y/o **TCP 2121** (FTP).  
+- **Desde el servidor hacia los dispositivos**: permitir **TCP 22** (SSH), **UDP 161** (SNMP), **ICMP** (PING).  
+- **Salida del servidor a Internet**: **SMTP 443/465/587**, **DNS 53**, **NTP 123**, y **Elastic 9200** si aplica.  
+- **WhatsApp Bot** (opcional): mantiene una sesión con WhatsApp por **HTTPS** (salida). El puerto **3000/TCP** puede quedar **solo local**; expón a la LAN únicamente si lo necesitas y **limita por IP**.
+
+> 💡 **Buenas prácticas**
+> - Restringe el acceso a **5000/5002** solo a redes/hosts de administración.  
+> - Usa **SSH** en lugar de Telnet.  
+> - En TFTP/FTP, limita origen por subred y considera una **zona DMZ** si es posible.  
+> - Mantén **NTP activo** para evitar problemas con **TLS** y **2FA**.
+
+---
+
+## ⚙️ **Parámetros útiles (cuando necesites ajustar)**
+
+- **UI HTTPS (5000/TCP)**: puerto del servicio web.  
+- **Terminal Web (5002/TCP)**: acceso a `…/terminal/<IP>?name=<EQUIPO>`.  
+- **WhatsApp Bot**: variable de entorno **`WA_BOT_PORT`** (por defecto 3000).  
+- **Elastic**: activa/desactiva con **`ELASTIC_ENABLED=1|0`** si tu despliegue usa Elasticsearch externo.
+
+> 📝 Si cambias puertos en tu instalación, **documenta el cambio** y **actualiza el firewall** de inmediato.
+
+---
+
+## ✅ **Checklist rápido**
+
+- [ ] **5000/TCP** abierto (UI Web).  
+- [ ] **5002/TCP** abierto (Terminal Web), restringido por IP.  
+- [ ] **514/UDP** abierto desde dispositivos (Syslog).  
+- [ ] **22/TCP**, **161/UDP**, **ICMP** permitidos **del servidor a los equipos** (stateful).  
+- [ ] **SMTP/DNS/NTP** de salida permitidos.  
+- [ ] **TFTP 69/UDP** y/o **FTP 2121/TCP** abiertos **solo** si usas archivos.  
+- [ ] (Opcional) **3000/TCP** local para WhatsApp Bot (o expuesto con restricción).  
+
+---

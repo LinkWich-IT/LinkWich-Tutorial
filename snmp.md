@@ -39,6 +39,10 @@ configure terminal
 end
 write memory
 
+
+---
+
+
 ### 5️⃣ **Probar desde LinkWich-Monitor**
 
 1. Ve a **Agregar Dispositivos → Descubrimiento por SNMP** (o **Agregar manual**).
@@ -55,7 +59,6 @@ write memory
 show running-config | include snmp-server
 show snmp
 ```
-
 ---
 
 ### 🟨 **ArubaOS-Switch / HPE ProCurve**

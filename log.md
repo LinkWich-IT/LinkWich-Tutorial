@@ -43,7 +43,7 @@ show logging
 
 ---
 
-### 3️⃣ **ArubaOS-Switch / HPE ProCurve**
+## 3️⃣ **ArubaOS-Switch / HPE ProCurve**
 En muchos modelos basta con `logging <SYSLOG_SERVER>`. Algunos soportan severidad explícita.
 ```bash
 configure terminal
@@ -63,7 +63,7 @@ show logging
 
 ---
 
-### 4️⃣ **Allied Telesis (AlliedWare Plus / AW+)**
+## 4️⃣ **Allied Telesis (AlliedWare Plus / AW+)**
 ```bash
 enable
 configure terminal
@@ -83,7 +83,7 @@ show logging
 
 ---
 
-### 5️⃣ **Linux (rsyslog)**
+## 5️⃣ **Linux (rsyslog)**
 **Crea un archivo de configuración:**
 ```bash
 sudo tee /etc/rsyslog.d/99-linkwich.conf >/dev/null <<'EOF'
@@ -100,7 +100,7 @@ sudo systemctl restart rsyslog
 ```bash
 logger -p local0.info "Prueba syslog desde Linux hacia <SYSLOG_SERVER>"
 ```
-### 6️⃣ **Windows (agente NXLog – ejemplo mínimo)**
+## 6️⃣ **Windows (agente NXLog – ejemplo mínimo)**
 
 Windows no envía syslog de forma nativa. Usa un agente como **NXLog** (o Syslog-NG/RSyslog para Windows).
 
@@ -127,7 +127,7 @@ define SYSLOG_SERVER <SYSLOG_SERVER>
 
 ---
 
-### 7️⃣ **Niveles de severidad (syslog)**
+## 7️⃣ **Niveles de severidad (syslog)**
 
 | **Número** | **Nombre**     | **Uso típico**            |
 |-----------:|----------------|---------------------------|
@@ -144,7 +144,7 @@ define SYSLOG_SERVER <SYSLOG_SERVER>
 
 ---
 
-### 8️⃣ **Comprobación en LinkWich-Monitor**
+## 8️⃣ **Comprobación en LinkWich-Monitor**
 
 - En el módulo **Syslog**, valida que aparezcan entradas desde las IPs de tus equipos.  
 - Filtra por **IP/hostname** y verifica **timestamps** correctos.  
@@ -152,7 +152,7 @@ define SYSLOG_SERVER <SYSLOG_SERVER>
 
 ---
 
-### 9️⃣ **Troubleshooting rápido**
+## 9️⃣ **Troubleshooting rápido**
 
 | **Síntoma**             | **Causa probable**           | **Acción sugerida**                                  |
 |-------------------------|------------------------------|------------------------------------------------------|

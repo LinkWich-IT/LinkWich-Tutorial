@@ -6,7 +6,7 @@ Esta guía muestra cómo **instalar GPT4All**, descargar un **modelo `.gguf`**, 
 
 ## 1️⃣ Requisitos
 
-- **Windows 10/11** (también funciona en Linux/macOS).
+- **Windows 10/11** (también funciona en Windows Server).
 - **CPU x64** (GPT4All corre en CPU; GPU opcional).
 - **Espacio en disco:** 2–10 GB según el modelo.
 - **RAM sugerida:** 8 GB mínimo (mejor con 16 GB+).
@@ -20,10 +20,6 @@ Esta guía muestra cómo **instalar GPT4All**, descargar un **modelo `.gguf`**, 
 3. Al finalizar, se creará la carpeta (Windows):
 > En esa carpeta se guardarán los modelos `.gguf`.
 
-> **Linux/macOS (referencia):**  
-> Linux: `~/.local/share/nomic.ai/GPT4All`  
-> macOS: `~/Library/Application Support/nomic.ai/GPT4All`  
-> *(Las rutas pueden variar según versión.)*
 
 ---
 
@@ -113,7 +109,6 @@ Pulsa **Guardar cambios** y luego **Recargar**.
 - Sitio oficial: **https://gpt4all.io/**  
 - Preguntas frecuentes y modelos: dentro de la app **GPT4All → Model Explorer**.
 
-> Si necesitas que lo convierta en una página `gpt4all.md` y agregue la entrada al `_sidebar.md`, dime el nombre exacto que quieres mostrar en el menú.
 
 
 

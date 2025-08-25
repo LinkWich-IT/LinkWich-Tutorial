@@ -80,6 +80,22 @@ show running-config | include snmp-server
 ```
 
 ---
+## 🟧 **Aruba Series 6000 (AOS-CX) – SNMP v2c**
+
+> Recomendado: **solo lectura (RO)** para monitoreo.  
+> Si realmente necesitas cambios vía SNMP, usa `access-level rw` (no recomendado).
+
+```bash
+configure terminal
+ snmp-server vrf default
+ snmp-server community <COMUNIDAD> access-level ro    ! usa ro (recomendado)
+ ! snmp-server community <COMUNIDAD> access-level rw  ! opcional, NO recomendado
+ snmp-server contact "<CONTACTO>"
+ snmp-server location "<UBICACION>"
+exit
+write memory
+```
+---
 
 ## 🟩 **Allied Telesis (AW+)**
 ```bash

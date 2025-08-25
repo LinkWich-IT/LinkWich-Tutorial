@@ -10,6 +10,7 @@
 * [Configurar Syslog Dispositivos](log.md)
 * [Configuración de Correo](correo.md)
 * [Configuración de WhatsApp](whatsapp.md)
+* [Configuración de Gpt4All](gpt.md)
 * [Mapa LLDP](mapa.md)
 * [Alertas](alertas.md)
 * [Respaldos](respaldos.md)

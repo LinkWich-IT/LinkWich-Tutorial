@@ -6,6 +6,7 @@
 * [Inicio](README.md)
 * [Dashboard](dashboard.md)
 * [Agregar Dispositivos](agregar.md)
+* [Configurar SNMP Dispositivos](snmp.md)
 * [Configuración de Correo](correo.md)
 * [Configuración de WhatsApp](whatsapp.md)
 * [Mapa LLDP](mapa.md)

@@ -38,10 +38,28 @@ configure terminal
  snmp-server contact "<CONTACTO>"
 end
 write memory
-
+```
 
 ---
 
+
+### 5️⃣ **Probar desde LinkWich-Monitor**
+
+1. Ve a **Agregar Dispositivos → Descubrimiento por SNMP** (o **Agregar manual**).
+2. Ingresa:
+   - **Versión SNMP:** `v2c`
+   - **Comunidad:** la que configuraste (p. ej., `LM-RO`)
+3. Ejecuta el **escaneo** o **guarda** el equipo.
+4. Verifica en **Dashboard → Disponibilidad** que aparezcan interfaces, CPU, memoria, etc.
+
+---
+
+### 🟦 **Verificación**
+```bash
+show running-config | include snmp-server
+show snmp
+```
+---
 
 
 ### 🟨 **ArubaOS-Switch / HPE ProCurve**

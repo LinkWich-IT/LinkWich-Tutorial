@@ -99,6 +99,60 @@ show snmp
 ```
 
 ---
+### 🪟 **Windows (Server / Pro) – Habilitar SNMP por PowerShell**
+
+> Ejecuta **PowerShell como Administrador**.
+
+#### 1) Instalar el servicio SNMP
+```powershell
+# Server 2012 R2 / 2016 (si existe Install-WindowsFeature):
+if (Get-Command Install-WindowsFeature -ErrorAction SilentlyContinue) {
+  Install-WindowsFeature -Name SNMP-Service -IncludeManagementTools
+  Install-WindowsFeature -Name SNMP-WMI-Provider
+}
+else {
+  # Windows 10/11 y Server 2019/2022 (Feature on Demand):
+  Add-WindowsCapability -Online -Name 'SNMP.Client~~~~0.0.1.0'
+}
+```
+
+#### 2) Configurar comunidad RO y restringir managers
+```powershell
+$Community = 'LM-RO'        # ← cambia si deseas otro nombre
+$ManagerIP = '10.100.0.12'  # ← IP de tu servidor LinkWich-Monitor
+
+# Comunidad RO (DWORD: 4=Read-Only, 8=Read-Write)
+New-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters' -Name 'ValidCommunities' -Force | Out-Null
+New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ValidCommunities' -Name $Community -PropertyType DWord -Value 4 -Force | Out-Null
+
+# Permitir solo a tu servidor (recomendado)
+New-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters' -Name 'PermittedManagers' -Force | Out-Null
+New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\PermittedManagers' -Name '1' -PropertyType String -Value $ManagerIP -Force | Out-Null
+```
+
+#### 3) (Opcional) Contacto y ubicación
+```powershell
+New-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters' -Name 'RFC1156Agent' -Force | Out-Null
+New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\RFC1156Agent' -Name 'sysContact'  -PropertyType String -Value 'NOC LinkWich-IT (+52 624 …)' -Force | Out-Null
+New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\RFC1156Agent' -Name 'sysLocation' -PropertyType String -Value 'Site Querencia | IDF-A | Rack 2'      -Force | Out-Null
+```
+
+#### 4) Abrir firewall (UDP/161) y arrancar el servicio
+```powershell
+New-NetFirewallRule -DisplayName 'SNMP-In (UDP 161)' -Direction Inbound -Protocol UDP -LocalPort 161 -Action Allow -Profile Any -ErrorAction SilentlyContinue | Out-Null
+
+Set-Service -Name 'SNMP' -StartupType Automatic
+Restart-Service -Name 'SNMP'
+```
+
+#### 5) Verificación
+```powershell
+Get-Service SNMP
+Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ValidCommunities'
+Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\PermittedManagers'
+```
+
+---
 
 ### 4️⃣ **Plantilla rápida (recomendado)**
 Valores de referencia:

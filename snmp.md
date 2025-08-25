@@ -29,7 +29,7 @@ Este tutorial explica cómo habilitar **SNMP v2c (solo lectura)** en **Cisco IOS
 
 > Reemplaza los valores entre `<>` por los de tu entorno.
 
-### 🟦 **Cisco IOS / IOS-XE**
+## 🟦 **Cisco IOS / IOS-XE**
 ```plaintext
 enable
 configure terminal
@@ -62,7 +62,7 @@ show snmp
 ---
 
 
-### 🟨 **ArubaOS-Switch / HPE ProCurve**
+## 🟨 **ArubaOS-Switch / HPE ProCurve**
 ```bash
 configure terminal
  snmp-server community "<COMUNIDAD>" operator
@@ -81,7 +81,7 @@ show running-config | include snmp-server
 
 ---
 
-### 🟩 **Allied Telesis (AW+)**
+## 🟩 **Allied Telesis (AW+)**
 ```bash
 enable
 configure terminal
@@ -99,7 +99,7 @@ show snmp
 ```
 
 ---
-### 🪟 **Windows (Server / Pro) – Habilitar SNMP por PowerShell**
+## 🪟 **Windows (Server / Pro) – Habilitar SNMP por PowerShell**
 
 > Ejecuta **PowerShell como Administrador**.
 
@@ -164,7 +164,7 @@ Valores de referencia:
 Aplica los comandos de tu marca con esos valores y guarda la configuración.
 
 
-### 6️⃣ **Checklist de conectividad**
+## 6️⃣ **Checklist de conectividad**
 
 | ✔️ | Verificación                                     |
 |----|--------------------------------------------------|
@@ -175,7 +175,7 @@ Aplica los comandos de tu marca con esos valores y guarda la configuración.
 | ✅ | Fecha/hora del equipo correctas                   |
 
 
-### 7️⃣ **Resolución de problemas**
+## 7️⃣ **Resolución de problemas**
 
 | **Síntoma**                | **Causa probable**            | **Acción sugerida**                               |
 |---------------------------|-------------------------------|---------------------------------------------------|

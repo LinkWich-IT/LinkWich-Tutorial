@@ -134,6 +134,84 @@ A continuación se muestran los requisitos de hardware y software para instalar 
 | Más de 150               | Intel Core i9 (o equivalente)  | 32 GB                               | No obligatoria (recomendada NVIDIA con CUDA para IA) | 1 Gbps (varias NIC si hay múltiples VLAN/redes)   | En Windows Server: soporte para NIC-TEAM |
 
 ---
+flowchart LR
+  %% --- Agrupaciones ---
+  subgraph LAN["On-Premise (Sitio del Cliente)"]
+    direction LR
+
+    subgraph Rack["Rack / Cuarto de Comunicaciones"]
+      LM["
+      🖥️ **LinkWich-Monitor (Servidor)**
+      — UI HTTPS :5000
+      — Terminal :5002
+      — Syslog :514/UDP
+      — SNMP Poller :161/UDP
+      — TFTP :69/UDP  | FTP :2121/TCP
+      "]
+      DB[(🗃️ MariaDB 10.x)]
+      NAS[(🗄️ NAS / Disco de Backups)]
+    end
+
+    subgraph Devices["Dispositivos de Red y TI"]
+      SW[🔌 Switches / PoE]
+      FW[🛡️ Firewall]
+      RTR[🌐 Router]
+      AP[📶 APs WiFi]
+      CCTV[🎥 NVR / Cámaras]
+      UPS[🔋 UPS / PDU]
+      SRV[🧰 Otros Servidores/VMs]
+    end
+
+    Admin[🧑‍💻 PC Admin/Operación]
+    Users[👥 Usuarios LAN]
+  end
+
+  subgraph EXT["Servicios Externos (Internet)"]
+    SMTP[✉️ SMTP (465/587/TLS)]
+    DNS[🧭 DNS (53/UDP)]
+    NTP[⏱️ NTP (123/UDP)]
+    ELK[(📊 Elasticsearch 9200 - opcional)]
+    WA[📱 WhatsApp Web (saliente)]
+  end
+
+  %% --- Relaciones internas ---
+  Admin -- "HTTPS :5000" --> LM
+  Users -- "HTTPS :5000 (solo lectura opc.)" --> LM
+
+  LM --- DB
+  LM --- NAS
+
+  LM -- "SNMP :161/UDP (polling)" <--> SW
+  LM -- "SNMP :161/UDP" <--> AP
+  LM -- "SNMP :161/UDP" <--> RTR
+  LM -- "SNMP :161/UDP" <--> FW
+  LM -- "SNMP :161/UDP" <--> SRV
+  LM -- "SNMP :161/UDP" <--> UPS
+
+  SW -- "Syslog :514/UDP" --> LM
+  AP -- "Syslog :514/UDP" --> LM
+  RTR -- "Syslog :514/UDP" --> LM
+  FW  -- "Syslog :514/UDP" --> LM
+  SRV -- "Syslog :514/UDP" --> LM
+  UPS -- "Syslog :514/UDP" --> LM
+  CCTV -- "Syslog :514/UDP (si aplica)" --> LM
+
+  LM -- "SSH :22 / Telnet :23 (respaldos/acciones)" --> SW
+  LM -- "TFTP :69/UDP | FTP :2121/TCP (archivos/firmware)" --> SW
+
+  %% --- Salidas a Internet ---
+  FW === EXT
+  LM -- "SMTP :465/587 (notificaciones correo)" --> SMTP
+  LM -- "DNS :53/UDP" --> DNS
+  LM -- "NTP :123/UDP" --> NTP
+  LM -- "Elastic :9200 (opcional)" --> ELK
+  LM -- "HTTPS saliente (login y sesión)" --> WA
+
+  %% --- Notas ---
+  classDef dim fill:#f7f7f7,stroke:#bbb,stroke-width:1px,color:#333;
+  class Rack,Devices,LAN,EXT dim;
+
+---
 
 # 🚀 **Instalación Rápida – Puertos y Reglas de Red necesarias**
 

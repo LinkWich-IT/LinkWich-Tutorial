@@ -140,38 +140,31 @@ flowchart LR
     direction LR
 
     subgraph Rack["Rack / Cuarto de Comunicaciones"]
-      LM["
-      🖥️ **LinkWich-Monitor (Servidor)**
-      — UI HTTPS :5000
-      — Terminal :5002
-      — Syslog :514/UDP
-      — SNMP Poller :161/UDP
-      — TFTP :69/UDP  | FTP :2121/TCP
-      "]
-      DB[(🗃️ MariaDB 10.x)]
-      NAS[(🗄️ NAS / Disco de Backups)]
+      LM["🖥️ **LinkWich-Monitor (Servidor)**<br/>UI HTTPS :5000<br/>Terminal :5002<br/>Syslog :514/UDP<br/>SNMP :161/UDP<br/>TFTP :69/UDP · FTP :2121/TCP"]
+      DB[("🗃️ MariaDB 10.x")]
+      NAS[("🗄️ NAS / Disco de Backups")]
     end
 
     subgraph Devices["Dispositivos de Red y TI"]
-      SW[🔌 Switches / PoE]
-      FW[🛡️ Firewall]
-      RTR[🌐 Router]
-      AP[📶 APs WiFi]
-      CCTV[🎥 NVR / Cámaras]
-      UPS[🔋 UPS / PDU]
-      SRV[🧰 Otros Servidores/VMs]
+      SW["🔌 Switches / PoE"]
+      FW["🛡️ Firewall"]
+      RTR["🌐 Router"]
+      AP["📶 APs WiFi"]
+      CCTV["🎥 NVR / Cámaras"]
+      UPS["🔋 UPS / PDU"]
+      SRV["🧰 Otros Servidores/VMs"]
     end
 
-    Admin[🧑‍💻 PC Admin/Operación]
-    Users[👥 Usuarios LAN]
+    Admin["🧑‍💻 PC Admin/Operación"]
+    Users["👥 Usuarios LAN"]
   end
 
   subgraph EXT["Servicios Externos (Internet)"]
-    SMTP[✉️ SMTP (465/587/TLS)]
-    DNS[🧭 DNS (53/UDP)]
-    NTP[⏱️ NTP (123/UDP)]
-    ELK[(📊 Elasticsearch 9200 - opcional)]
-    WA[📱 WhatsApp Web (saliente)]
+    SMTP["✉️ SMTP (465/587/TLS)"]
+    DNS["🧭 DNS (53/UDP)"]
+    NTP["⏱️ NTP (123/UDP)"]
+    ELK["📊 Elasticsearch 9200 (opcional)"]
+    WA["📱 WhatsApp Web (saliente)"]
   end
 
   %% --- Relaciones internas ---
@@ -181,33 +174,33 @@ flowchart LR
   LM --- DB
   LM --- NAS
 
-  LM -- "SNMP :161/UDP (polling)" <--> SW
-  LM -- "SNMP :161/UDP" <--> AP
-  LM -- "SNMP :161/UDP" <--> RTR
-  LM -- "SNMP :161/UDP" <--> FW
-  LM -- "SNMP :161/UDP" <--> SRV
-  LM -- "SNMP :161/UDP" <--> UPS
+  LM <--> |"SNMP :161/UDP (polling)"| SW
+  LM <--> |"SNMP :161/UDP"| AP
+  LM <--> |"SNMP :161/UDP"| RTR
+  LM <--> |"SNMP :161/UDP"| FW
+  LM <--> |"SNMP :161/UDP"| SRV
+  LM <--> |"SNMP :161/UDP"| UPS
 
-  SW -- "Syslog :514/UDP" --> LM
-  AP -- "Syslog :514/UDP" --> LM
-  RTR -- "Syslog :514/UDP" --> LM
-  FW  -- "Syslog :514/UDP" --> LM
-  SRV -- "Syslog :514/UDP" --> LM
-  UPS -- "Syslog :514/UDP" --> LM
-  CCTV -- "Syslog :514/UDP (si aplica)" --> LM
+  SW --> |"Syslog :514/UDP"| LM
+  AP --> |"Syslog :514/UDP"| LM
+  RTR --> |"Syslog :514/UDP"| LM
+  FW  --> |"Syslog :514/UDP"| LM
+  SRV --> |"Syslog :514/UDP"| LM
+  UPS --> |"Syslog :514/UDP"| LM
+  CCTV --> |"Syslog :514/UDP (si aplica)"| LM
 
-  LM -- "SSH :22 / Telnet :23 (respaldos/acciones)" --> SW
-  LM -- "TFTP :69/UDP | FTP :2121/TCP (archivos/firmware)" --> SW
+  LM --> |"SSH :22 / Telnet :23 (respaldos/acciones)"| SW
+  LM --> |"TFTP :69/UDP · FTP :2121/TCP (archivos/firmware)"| SW
 
   %% --- Salidas a Internet ---
   FW === EXT
-  LM -- "SMTP :465/587 (notificaciones correo)" --> SMTP
-  LM -- "DNS :53/UDP" --> DNS
-  LM -- "NTP :123/UDP" --> NTP
-  LM -- "Elastic :9200 (opcional)" --> ELK
-  LM -- "HTTPS saliente (login y sesión)" --> WA
+  LM --> |"SMTP :465/587 (correo)"| SMTP
+  LM --> |"DNS :53/UDP"| DNS
+  LM --> |"NTP :123/UDP"| NTP
+  LM --> |"Elastic :9200 (opc)"| ELK
+  LM --> |"HTTPS saliente (login sesión)"| WA
 
-  %% --- Notas ---
+  %% --- Estilo grupos ---
   classDef dim fill:#f7f7f7,stroke:#bbb,stroke-width:1px,color:#333;
   class Rack,Devices,LAN,EXT dim;
 

@@ -140,7 +140,7 @@ flowchart LR
     direction LR
     subgraph Rack["Rack / Cuarto de Comunicaciones"]
       LM["🖥️ **LinkWich-Monitor (Servidor)**<br/>UI HTTPS :5000<br/>Terminal :5002<br/>Syslog :514/UDP<br/>SNMP :161/UDP<br/>TFTP :69/UDP · FTP :2121/TCP"]
-      DB[("🗃️ MariaDB 10.x")]
+      DB[("🗃️ DataBase 10.x")]
       NAS[("🗄️ NAS / Disco de Backups")]
     end
     subgraph Devices["Dispositivos de Red y TI"]
@@ -213,7 +213,7 @@ Para que **LinkWich-Monitor** funcione sin bloqueos, asegúrate de **permitir lo
 | **514** | UDP | **Entrada** desde dispositivos | **Syslog Receiver** | Recepción de logs desde switches/routers/UPS | ✅ (si usas Syslog) | En los equipos, apunta el **servidor syslog** a `IP:514/UDP`. Considera NAT/firewall intermedio. |
 | **69** | UDP | **Entrada** desde dispositivos | **TFTP embebido** | Transferencia de firmware/respaldos | ☑️ Opcional | TFTP usa puertos **efímeros** además del 69/UDP. Abre/permite **relacionados** o usa NAT stateful. |
 | **2121** | TCP | **Entrada** desde dispositivos | **FTP embebido** (si se habilita) | Alternativa a TFTP para archivos | ☑️ Opcional | Servicio desactivado por defecto. Si se usa **FTP pasivo**, define un rango y permítelo en el firewall. |
-| **3000** | TCP | Entrada **local** (loopback) | **WhatsApp Bot** | Vinculación QR y mensajería | ☑️ Opcional | Por defecto local. Si expones a la LAN, **restringe**. Puede variarse con `WA_BOT_PORT`. |
+
 | **443 / 465 / 587** | TCP | **Salida** a Internet / SMTP | **Correo saliente** | Envío de notificaciones por email | ✅ (si envías correo) | Abre el puerto según tu proveedor (TLS/SSL). |
 | **22 / 23** | TCP | **Salida** a dispositivos | **SSH / Telnet a equipos** | Respaldos, comandos y terminal | ✅ | Prefiere **SSH (22)**. Permite retorno de sesiones (stateful). |
 | **161** | UDP | **Salida** a dispositivos | **SNMP Polling** | Métricas y descubrimiento SNMP | ✅ (si usas SNMP) | Permite respuestas UDP de vuelta (stateful). Traps (162/UDP) no requeridos salvo uso explícito. |
@@ -229,7 +229,6 @@ Para que **LinkWich-Monitor** funcione sin bloqueos, asegúrate de **permitir lo
 - **Desde dispositivos hacia el servidor**: permitir **UDP 514** (Syslog) y, si usas archivos, **UDP 69** (TFTP) y/o **TCP 2121** (FTP).  
 - **Desde el servidor hacia los dispositivos**: permitir **TCP 22** (SSH), **UDP 161** (SNMP), **ICMP** (PING).  
 - **Salida del servidor a Internet**: **SMTP 443/465/587**, **DNS 53**, **NTP 123**, y **Elastic 9200** si aplica.  
-- **WhatsApp Bot** (opcional): mantiene una sesión con WhatsApp por **HTTPS** (salida). El puerto **3000/TCP** puede quedar **solo local**; expón a la LAN únicamente si lo necesitas y **limita por IP**.
 
 > 💡 **Buenas prácticas**
 > - Restringe el acceso a **5000/5002** solo a redes/hosts de administración.  

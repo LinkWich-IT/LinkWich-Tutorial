@@ -8,7 +8,7 @@ Este tutorial explica cómo configurar en **LinkWich‑Monitor** las **consultas
 
 ---
 
-## 1️⃣ Requisitos previos (sin pierde)
+## 1️⃣ Requisitos previos 
 
 Antes de configurar LinkWich‑Monitor, asegúrate de que:
 

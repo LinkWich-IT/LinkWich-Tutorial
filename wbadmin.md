@@ -103,11 +103,11 @@ En LinkWich‑Monitor entra al módulo de **Backups Windows** y crea una nueva p
 
 - **Descripción:** p.ej. `Backup diario 22 h`
 - **Servidor Windows:** selecciona el servidor, por ejemplo:  
-  `SERVER-MILESTON-CCTV-1 (10.0.10.63)`
+  `SERVER-MILESTON-CCTV-1 (10.17.0.63)`
 - **Frecuencia:** `Diaria`
 - **Hora:** define la hora de la **consulta**
 - **Destinatarios (Ctrl + clic):** por ejemplo:
-  - `jhernandez@gbvoip.com`
+  - `soporte@linkwich.com`
 
 📌 **Recomendación de horario:**  
 Pon la consulta **después** de la ventana real del backup.  

@@ -106,6 +106,7 @@ Las notificaciones por WhatsApp dependen de una **plataforma de terceros** (What
 - cambios técnicos en la plataforma,
 - conectividad a internet,
 - políticas/actualizaciones del proveedor.
+- políticas/actualizaciones de WhatsApp.
 
 📌 Por lo anterior, **pueden presentarse interrupciones o fallas sin previo aviso** que estén fuera del control directo de LinkWich-Monitor o del integrador.
 

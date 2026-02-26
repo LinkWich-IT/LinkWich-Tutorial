@@ -14,6 +14,7 @@
 * [Mapa LLDP](mapa.md)
 * [Alertas](alertas.md)
 * [Respaldos](respaldos.md)
+* [Consultas para respaldos de Windows](wbadmin.md)
 * [Disponibilidad](disponibilidad.md)
 * [Terminal SSH](terminal.md)
 * [NetPath](netpath.md)
